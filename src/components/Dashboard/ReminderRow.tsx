@@ -38,9 +38,9 @@ export default function ReminderRow({ reminder }: Props) {
                     Edit
                 </Button>
                 <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
-                    <DialogBackdrop className="fixed inset-0 bg-black/30" />
+                     <DialogBackdrop transition className="fixed inset-0 bg-black/30 duration-300 ease-out data-closed:opacity-0" />
                     <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-                        <DialogPanel className="max-w-lg space-y-4 border bg-white p-12 rounded-lg shadow-lg">
+                        <DialogPanel transition className="max-w-lg space-y-4 bg-white p-12 duration-300 ease-out data-closed:scale-95 data-closed:opacity-0 rounded-lg shadow-lg">
                            Edit Reminder: <DialogTitle className="font-bold">
                                 {` ${reminder.name}`}
                             </DialogTitle>
