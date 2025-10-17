@@ -1,4 +1,4 @@
-import { Description, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import { Description, Dialog, DialogPanel, DialogTitle, DialogBackdrop } from '@headlessui/react'
 import { useState } from 'react'
 
 function Toggle() {
@@ -7,9 +7,11 @@ function Toggle() {
   return (
     <>
       <button onClick={() => setIsOpen(true)}>Open dialog</button>
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="relative z-50">
+      <Dialog open={isOpen} onClose={() => setIsOpen(false)} transition className="relative z-50">
+         <DialogBackdrop transition className="fixed inset-0 bg-black/30 duration-300 ease-out data-closed:opacity-0" />
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <DialogPanel className="max-w-lg space-y-4 border bg-white p-12">
+          <DialogPanel transition
+            className="max-w-lg space-y-4 bg-white p-12 duration-300 ease-out data-closed:scale-95 data-closed:opacity-0">
             <DialogTitle className="font-bold">Deactivate account</DialogTitle>
             <Description>This will permanently deactivate your account</Description>
             <p>Are you sure you want to deactivate your account? All of your data will be permanently removed.</p>
