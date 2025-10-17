@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ReminderStatusBadge from "../components/ReminderStatusBadge";
+import ReminderStatusBadge from "../components/Dashboard/ReminderStatusBadge";
 import type { Reminder } from "../types/reminder";
 
 const mockReminder: Reminder = {

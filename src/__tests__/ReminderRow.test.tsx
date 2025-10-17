@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ReminderRow from "../components/ReminderRow";
+import ReminderRow from "../components/Dashboard/ReminderRow";
 import type { Reminder } from "../types/reminder";
 
 const mockReminder: Reminder = {

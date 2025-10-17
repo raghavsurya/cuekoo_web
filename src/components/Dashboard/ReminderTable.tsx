@@ -1,4 +1,4 @@
-import type { Reminder } from "../types/reminder";
+import type { Reminder } from "../../types/reminder";
 import ReminderRow from "./ReminderRow";
 
 interface Props {

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import type { Reminder } from "../types/reminder";
 import { mockReminders } from "../data/mockReminders";
-import Layout from "../components/Layout";
-import Header from "../components/Header";
-import ReminderTable from "../components/ReminderTable";
+import Layout from "../components/Dashboard/Layout";
+import Header from "../components/Dashboard/Header";
+import ReminderTable from "../components/Dashboard/ReminderTable";
 
 export default function Dashboard() {
 

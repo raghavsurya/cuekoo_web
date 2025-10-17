@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ReminderTable from "../components/ReminderTable";
+import ReminderTable from "../components/Dashboard/ReminderTable";
 import { mockReminders } from "../data/mockReminders";
 
 describe("ReminderTable", () => {

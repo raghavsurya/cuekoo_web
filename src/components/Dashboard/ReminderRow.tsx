@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from '@headlessui/react'
 import { Description, Dialog, DialogPanel, DialogBackdrop, DialogTitle } from '@headlessui/react'
-import type { Reminder } from "../types/reminder";
+import type { Reminder } from "../../types/reminder";
 import ReminderStatusBadge from "./ReminderStatusBadge";
 
 

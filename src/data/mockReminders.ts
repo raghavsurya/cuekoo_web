@@ -7,10 +7,8 @@ export const mockReminders: Reminder[] = [
     location: {lat: 37.7749, lng: -122.4194},
     notes: "Bring medical reports",
     eventDate: "2025-10-20T09:00:00Z",
-    remindFrequency: "Weekly",
+    remindFrequency: "weekly",
     active: true,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
   },
   {
     id: "2",
@@ -20,8 +18,6 @@ export const mockReminders: Reminder[] = [
     eventDate: "2025-10-18T15:30:00Z",
     remindFrequency: "Once",
     active: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
   },
   {
     id: "3",
@@ -31,8 +27,6 @@ export const mockReminders: Reminder[] = [
     eventDate: "2025-10-18T15:30:00Z",
     remindFrequency: "Once",
     active: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
   },
   {
     id: "4",
@@ -41,9 +35,7 @@ export const mockReminders: Reminder[] = [
     notes: "Discuss Client roadmap",
     eventDate: "2025-10-18T15:30:00Z",
     remindFrequency: "Once",
-    active: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    active: false
   },
   {
     id: "5",
@@ -53,7 +45,5 @@ export const mockReminders: Reminder[] = [
     eventDate: "2025-10-18T15:30:00Z",
     remindFrequency: "Once",
     active: false,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
   },
 ];

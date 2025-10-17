@@ -1,10 +1,18 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css'
-import App from './App.tsx'
+import CreateReminder from "./pages/CreateReminder";
+import Dashboard from "./pages/Dashboard";
 
-createRoot(document.getElementById('root')!).render(
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/create" element={<CreateReminder />} />
+      </Routes>
+    </BrowserRouter>
+  </StrictMode>
 )
