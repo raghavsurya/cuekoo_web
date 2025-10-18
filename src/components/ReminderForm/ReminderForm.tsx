@@ -4,6 +4,7 @@ import LocationPicker from "./LocationPicker";
 import DateTimeInput from "./DateTimeInput";
 import FrequencySelect from "./FrequencySelect";
 import NotesInput from "./NotesInput";
+import { useNavigate } from "react-router-dom";
 
 import "leaflet/dist/leaflet.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -17,14 +18,50 @@ export default function ReminderForm() {
     location: null,
   });
 
+    const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const navigate = useNavigate();
+
   const handleChange = (field: keyof ReminderInput, value: any) => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Reminder created:", form);
-    // later: POST to Elixir API
+    // POST to Elixir API
+    try {
+      const res = await fetch("http://localhost:4000/api/reminders/new", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          notes: form.notes,
+          event_scheduled_at: form.eventDate.toISOString(),
+          remind_frequency: form.remindFrequency,
+          active: true,
+          location: form.location,
+        }),
+      });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(`API Error: ${res.status} - ${errText}`);
+      }
+
+      const data = await res.json();
+      console.log("✅ Reminder created:", data);
+
+      navigate("/"); // Go back to dashboard after success
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Failed to create reminder");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
