@@ -3,6 +3,7 @@ import { Button } from '@headlessui/react'
 import { Description, Dialog, DialogPanel, DialogBackdrop, DialogTitle } from '@headlessui/react'
 import type { Reminder } from "../../types/reminder";
 import ReminderStatusBadge from "./ReminderStatusBadge";
+import ReminderForm from "../ReminderForm/ReminderForm";
 
 
 interface Props {
@@ -44,9 +45,7 @@ export default function ReminderRow({ reminder }: Props) {
                            Edit Reminder: <DialogTitle className="font-bold">
                                 {` ${reminder.name}`}
                             </DialogTitle>
-                            <Description>This will edit your reminder named {reminder.name} </Description>
-                            <Description>Currently this reminder is scheduled for {reminder.eventDate} </Description>
-                            <p>Are you sure you want to deactivate your account? All of your data will be permanently removed.</p>
+                           <ReminderForm existingReminder={reminder} reminderState="edit"  />
                             <div className="flex gap-4">
                                 <Button className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700" onClick={() => setIsOpen(false)}>Cancel</Button>
                                 <Button className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700" onClick={() => setIsOpen(false)}>Deactivate</Button>
