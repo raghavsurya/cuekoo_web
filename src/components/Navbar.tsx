@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // for icons (install below)
+import { Menu, X, Clock2 , Plus, LayoutDashboard} from "lucide-react"; // for icons (install below)
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
 
   const navLinks = [
-    { name: "Dashboard", path: "/" },
-    { name: "Reminders", path: "/reminders" },
-    { name: "Create", path: "/create" },
+    { name: "Dashboard", path: "/", icon: <LayoutDashboard color="#238660" strokeWidth={1.5} size={24} display="inlne-flex" /> },
+    { name: "Reminders", path: "/reminders", icon: <Clock2 color="#238660"  strokeWidth={0.75} size={18}  /> },
+    { name: "Create", path: "/create", icon: <Plus color="#238660"  strokeWidth={0.75} size={18}  /> },
   ];
+
+
 
   return (
     <nav className="bg-white shadow-md">
@@ -20,13 +22,14 @@ export function Navbar() {
             <img
               src="/cuekoo.svg"
               alt="Logo"
-              className="h-15 w-15 invert-[0.6] sepia-[1] saturate-[2] hue-rotate-[270deg]"
+             
+              className="h-32 w-15 invert-[0.6] sepia-[1] saturate-[2] hue-rotate-[270deg]"
             />
-            <span className="font-bold text-lg text-gray-800">RemindrApp</span>
+            <span className="font-bold text-lg text-gray-800">Cuekoo</span>
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex space-x-6 items-center">
+          <div className="hidden md:flex space-x-8 items-center">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
@@ -37,7 +40,8 @@ export function Navbar() {
                   }`
                 }
               >
-                {link.name}
+                <div className="inline-block mr-1 align-middle">{link.name} {link.icon}</div>
+                
               </NavLink>
             ))}
 
