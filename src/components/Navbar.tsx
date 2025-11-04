@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Menu, X, Clock2 , Plus, LayoutDashboard} from "lucide-react"; // for icons (install below)
+import { NavLink, useNavigate } from "react-router-dom";
+import { Menu, X, Clock2 , Plus, LayoutDashboard, LogInIcon} from "lucide-react"; // for icons (install below)
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Dashboard", path: "/", icon: <LayoutDashboard color="#238660" strokeWidth={1.5} size={24} display="inlne-flex" /> },
     { name: "Reminders", path: "/reminders", icon: <Clock2 color="#238660"  strokeWidth={0.75} size={18}  /> },
     { name: "Create", path: "/create", icon: <Plus color="#238660"  strokeWidth={0.75} size={18}  /> },
+    { name: "Login", path: "/login", icon: <LogInIcon color="#238660"  strokeWidth={2.5} size={18}  /> },
   ];
 
 
@@ -45,12 +47,12 @@ export function Navbar() {
               </NavLink>
             ))}
 
-            <Link
-              to="/create"
+            <button
+              onClick={() => navigate('/login')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium"
             >
               Sign In
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -84,13 +86,12 @@ export function Navbar() {
               </NavLink>
             ))}
 
-            <Link
-              to="/create"
-              onClick={() => setOpen(false)}
+            <button
+              onClick={() => { setOpen(false); navigate('/login'); }}
               className="block bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-lg font-medium"
             >
               Sign In
-            </Link>
+            </button>
           </div>
         </div>
       )}

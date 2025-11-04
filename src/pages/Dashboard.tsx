@@ -3,7 +3,6 @@ import type { Reminder } from "../types/reminder";
 import Layout from "../components/Dashboard/Layout";
 import Header from "../components/Dashboard/Header";
 import ReminderTable from "../components/Dashboard/ReminderTable";
-import { FunctionSquare } from "lucide-react";
 
 export default function Dashboard() {
 
@@ -19,10 +18,14 @@ export default function Dashboard() {
                     credentials: "include",
                 });
                 if (!response.ok) {
+                    if (response.status === 401) {
+                        setError("Unauthorized. Please log in.");
+                        return;
+                    }
                     throw new Error("Failed to fetch reminders");
                 }
                 const data = await response.json();
-                setReminders(data);
+                setReminders(data["reminders"]);
             } catch (error) {
                 setError((error as Error).message);
             } finally {
